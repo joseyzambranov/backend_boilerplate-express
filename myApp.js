@@ -2,6 +2,13 @@ var express = require('express');
 var app = express()
 require('dotenv').config()
 
+app.get("/now",function(req,res,next){
+    req.time = new Date().toString()
+    next()
+},function(req,res){
+    res.json({"time" : req.time})
+})
+
 app.use(function(req,res,next){
     
     console.log(req.method + " " + req.path + " - " + req.ip)
