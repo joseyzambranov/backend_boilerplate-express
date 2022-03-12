@@ -7,7 +7,7 @@ const getCurrentTimeData=()=>{
 }
 
 app.get("/now",function(req,res,next){
-    req.time = getCurrentTimeData()
+    req.time = getCurrentTimeData()+20
     next()
 },function(req,res){
     res.json({"time" : req.time})
