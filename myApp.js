@@ -2,8 +2,12 @@ var express = require('express');
 var app = express()
 require('dotenv').config()
 
+const getCurrentTimeData=()=>{
+    return new Date().toString()
+}
+
 app.get("/now",function(req,res,next){
-    req.time = new Date().toString()
+    req.time = getCurrentTimeData()
     next()
 },function(req,res){
     res.json({"time" : req.time})
