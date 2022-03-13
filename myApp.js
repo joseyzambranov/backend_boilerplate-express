@@ -2,12 +2,17 @@ var express = require('express');
 var app = express()
 require('dotenv').config()
 
+app.get("/:word/echo", function (req,res){
+  var  {word} = req.params
+   res.json({ echo: word})
+})
+
 const getCurrentTimeData=()=>{
     return new Date().toString()
 }
 
 app.get("/now",function(req,res,next){
-    req.time = getCurrentTimeData()+20
+    req.time = getCurrentTimeData()
     next()
 },function(req,res){
     res.json({"time" : req.time})
