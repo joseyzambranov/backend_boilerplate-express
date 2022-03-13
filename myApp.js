@@ -2,6 +2,13 @@ var express = require('express');
 var app = express()
 require('dotenv').config()
 
+app.get("/name",function(req,res){
+    var name = req.query.first
+    var names = req.query.last
+    //var {first: name ,last: names }= req.query
+    res.json({name : `${name} ${names}`})
+})
+
 app.get("/:word/echo", function (req,res){
   var  {word} = req.params
    res.json({ echo: word})
