@@ -5,12 +5,20 @@ require('dotenv').config()
 
 app.use(bodyParser.urlencoded({extended:false}))
 
-
 app.get("/name",function(req,res){
     var name = req.query.first
     var names = req.query.last
     //var {first: name ,last: names }= req.query
     res.json({name : `${name} ${names}`})
+})
+
+app.post("/name",function(req,res){
+
+    var name = req.body.first
+    var names = req.body.last
+    //var {first: name ,last: names }= req.query
+    res.json({name : `${name} ${names}`})
+
 })
 
 app.get("/:word/echo", function (req,res){
